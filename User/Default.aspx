@@ -3,7 +3,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
-    m<main>
+    <main>
 
         <!-- slider Area Start-->
         <div class="slider-area ">

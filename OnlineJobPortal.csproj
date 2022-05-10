@@ -250,6 +250,7 @@
     <Compile Include="User\Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
+    <Compile Include="User\Expection.cs" />
     <Compile Include="User\JobDetails.aspx.cs">
       <DependentUpon>JobDetails.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
