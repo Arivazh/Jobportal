@@ -13,7 +13,7 @@ namespace OnlineJobPortal.User
     {
         SqlConnection con;
         SqlCommand cmd;
-        String str = ConfigurationManager.ConnectionStrings["cs"].ConnectionString;
+        string str = ConfigurationManager.ConnectionStrings["JobPortalConnectionString"].ConnectionString;
       
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -21,7 +21,7 @@ namespace OnlineJobPortal.User
         }
 
         protected void btnSend_Click(object sender, EventArgs e)
-        {
+                                {
             try
             {
                 con = new SqlConnection(str);
@@ -45,7 +45,7 @@ namespace OnlineJobPortal.User
                     LblMsg.Visible = true;
                     LblMsg.Text = "cannot save record right now, plz try after sometime..!";
                     LblMsg.CssClass = "alert alert-danger";
-                }
+                }  
 
             }
             catch (Expection ex)

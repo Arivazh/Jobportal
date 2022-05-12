@@ -281,8 +281,8 @@
             </div>
 
             <div class="row">
-                </div>
-                <div class="col-12 pb-20">
+                <%--</div>--%>
+                <div class="col-12 pb-20">                                
                     <asp:Label ID="LblMsg" runat="server" Visible="false"></asp:Label>
                 </div>
                 <div class="col-12">
