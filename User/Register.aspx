@@ -10,9 +10,9 @@
                          <asp:Label ID="lblMsg" runat="server" Visible="false"></asp:Label>
                        </div>
                        <div class="col-12">
-                                <h2 class="contact-title">Sign Up</h2>
+                                <h2 class="contact-title text-center">Sign Up</h2>
                         </div>
-                        <div class="col-lg-8">
+                        <div class="col-lg-6 mx-auto">
                                 <div class="form-contact contact_form">
                                      <div class="row">
                                           <div class="col-12">
@@ -28,14 +28,15 @@
                                             <div class="col-sm-6">
                                                  <div class="form-group">
                                                          <label>Password</label>
-                                                          <asp:TextBox ID="txtPassword" runat="server" CssClass="form-control" placeholder="Enter Password" required>
-                                                          </asp:TextBox>
-                                                   </div>
+                                                          <asp:TextBox ID="txtPassword" runat="server" CssClass="form-control" placeholder="Enter Password" 
+                                                                 TextMode="Password" required></asp:TextBox>
+                                                  </div>
                                             </div>
                                             <div class="col-sm-6">
                                                  <div class="form-group">
                                                     <label>Confirm Password</label>
-                                                    <asp:TextBox ID="txtConfirmPassword" runat="server" CssClass="form-control" placeholder="Enter Confirm Password" required></asp:TextBox>
+                                                    <asp:TextBox ID="txtConfirmPassword" runat="server" CssClass="form-control" TextMode="Password" 
+                                                        placeholder="Enter Confirm Password" required></asp:TextBox>
                                                     <asp:CompareValidator ID="CompareValidator1" runat="server"  ErrorMessage="Password & Confirm Password sholud be same" 
                                                          ControlToCompare="txtPassword" ControlToValidate="txtConfirmPassword" ForeColor="Red" Display="Dynamic" SetFocusOnError="true"
                                                          Font-Size="Small">
@@ -80,15 +81,20 @@
                                                 <div class="form-group">
                                                     <label>Email</label>
                                                     <asp:DropDownList ID="ddlCountry" runat="server" DataSourceID="SqlDataSource1" CssClass="form-contact w-100"
-                                                        Append>
+                                                        AppendDataBoundItems="true" DataTextField="CountryName" DataValueField="CountryName">
                                                         <asp:ListItem Value="0">Select Country</asp:ListItem>
                                                     </asp:DropDownList>
+                                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Country is required"
+                                                        ForeColor="Red"  Display="Dynamic" SetFocusOnError="true" Font-Size="Small" InitialValue="0" 
+                                                        ControlToValidate="ddlCountry"></asp:RequiredFieldValidator>
                                                       <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:JobPortalConnectionString %>" SelectCommand="SELECT [CountryName] FROM [country]"></asp:SqlDataSource>
                                                    </div>
                                                 </div>
                                              </div>
                                              <div class="form-group mt-3">
-                                                     <asp:Button ID="btnSend" runat="server" Text="Send" CssClass="button button-contactForm boxed-btn" OnClick="btnSend_Click" />
+                                                     <asp:Button ID="btnRegister" runat="server" Text="Register" CssClass="button button-contactForm boxed-btn mr-4" 
+                                                          OnClick="btnRegister_Click1" />
+                                                      <span class="clicklink"><a href="../User/Login.aspx">Already Registered? Click Here..</a></span>
                                               </div>
                                       </div>
                                 </div>
