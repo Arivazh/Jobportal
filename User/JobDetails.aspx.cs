@@ -1,5 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
+using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -9,7 +12,22 @@ namespace OnlineJobPortal.User
 {
     public partial class JobDetails : System.Web.UI.Page
     {
-        protected void Page_Load(object sender, EventArgs e)
+        //SqlConnection con;
+        //SqlDataSourceCommandEventArgs cmd;
+        //SqlDataAdapter sds;
+        //DataTable dt; 
+        //string str = ConfigurationManager.ConnectionString["cs"].ConnectionString;
+        //protected void Page_Load(object sender, EventArgs e)
+        //{
+
+        //}
+
+        protected void DataList1_ItemCommand(object source, DataListCommandEventArgs e)
+        {
+
+        }
+
+        protected void DataList1_ItemDataBound(object sender, DataListItemEventArgs e)
         {
 
         }

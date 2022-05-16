@@ -22,7 +22,7 @@
                                                       </asp:TextBox>
                                                 </div>
                                             </div>
-                                            <div class="col-sm-6">
+                                            <div class="col-sm-12">
                                                  <div class="form-group">
                                                          <label>Password</label>
                                                           <asp:TextBox ID="txtPassword" runat="server" CssClass="form-control" placeholder="Enter Password" 
