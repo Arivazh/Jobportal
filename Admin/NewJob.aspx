@@ -5,14 +5,11 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
 
-    <div style="background-image: url('../images/bg.jpg'); width: 100%; height: 720px; background-repeat: no-repeat; background-size: cover; background-attachment: fixed;">
+    <div style="background-image: url('../images/bg.jpg'); width: 100%; height: 720px; background-repeat: no-repeat; background-repeat: no-repeat; background-size: cover; background-attachment: fixed;">
         <div class="container pt-4 pb-4">
             <div>
-
-                <%--<asp:Label ID="lblMsg" runat="server" Text="Label">
-                 </asp:Label>--%>
+                <asp:Label ID="llbMg" runat="server"></asp:Label>
             </div>
-
             <h3 class="text-center">Add Job</h3>
 
             <div class="row mr-lg-5 ml-lg-5 mb-3">
@@ -31,9 +28,9 @@
 
             <div class="row mr-lg-5 ml-lg-5 mb-3">
                 <div class="col-md-12 pt-3">
-                    <label for="txtDescriptio" style="font-weight: 600">Description</label>
-                    <asp:TextBox ID="txtDescription" runat="server" CssClass="form-control" placeholder="Ex. Web Developer,App Developer"
-                        Text="Multiline" required>
+                    <label for="txtDescription" style="font-weight: 600">Description</label>
+                    <asp:TextBox ID="txtDescription" runat="server" CssClass="form-control" placeholder="Enter Job Description"
+                         TextMode="MultiLine">
                     </asp:TextBox>
                 </div>
             </div>
@@ -81,7 +78,8 @@
                         <asp:ListItem>Freelance</asp:ListItem>
                     </asp:DropDownList>
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="JobType is required" ForeColor="Red"
-                        ControlToValidate="ddlJobType" InitialValue="0" Display="Dynamic" SetFocusOnError="true"></asp:RequiredFieldValidator>
+                        ControlToValidate="ddlJobType" InitialValue="0" Display="Dynamic" SetFocusOnError="true">
+                    </asp:RequiredFieldValidator>
                 </div>
             </div>
 
@@ -115,7 +113,7 @@
                 <div class="col-md-12 pt-3">
                     <label for="txtAddress" style="font-weight: 600">Address</label>
                     <asp:TextBox ID="txtAddress" runat="server" CssClass="form-control" placeholder="Enter Work Location"
-                        Text="Multiline" required>
+                        TextMode="Multiline" required>
                     </asp:TextBox>
                 </div>
             </div>
@@ -128,7 +126,8 @@
                     </asp:DropDownList>
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ErrorMessage="Country is required"
                         ForeColor="Red" Display="Dynamic" SetFocusOnError="true" Font-Size="Small" InitialValue="0"
-                        ControlToValidate="ddlCountry"></asp:RequiredFieldValidator>
+                        ControlToValidate="ddlCountry">
+                    </asp:RequiredFieldValidator>
                     <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:JobPortalConnectionString %>"
                         SelectCommand="SELECT [CountryName] FROM [country]"></asp:SqlDataSource>
                 </div>
@@ -141,9 +140,14 @@
 
             <div class="row mr-lg-5 ml-lg-5 mb-3 pt-4">
                 <div class="col-md-3 col-md-offset-2 mb-3">
-                    <asp:Button ID="btnAdd" runat="server" CssClass="btn-primary btn-block" BackColor="#7200f" Text="Add Job"/>
-                  </div>
-              </div>
-          </div>
-     </div>
+                    <asp:Button ID="btnAdd" runat="server" CssClass="btn-primary btn-block" BackColor="#7200f" Text="Add Job"
+                        OnClick="btnAdd_Click"/>
+
+                </div>
+            </div>
+
+        </div>
+
+
+    </div>
 </asp:Content>

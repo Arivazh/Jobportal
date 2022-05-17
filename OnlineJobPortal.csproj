@@ -68,6 +68,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Admin\Dashboard.aspx" />
+    <Content Include="Admin\JobList.aspx" />
+    <Content Include="Admin\NewJob.aspx" />
+    <Content Include="Admin\ViewResume.aspx" />
     <Content Include="assets\css\animate.min.css" />
     <Content Include="assets\css\bootstrap.min.css" />
     <Content Include="assets\css\flaticon.css" />
@@ -80,6 +83,7 @@
     <Content Include="assets\css\slick.css" />
     <Content Include="assets\css\slicknav.css" />
     <Content Include="assets\css\style.css" />
+    <Content Include="assets\css\styles.css" />
     <Content Include="assets\css\themify-icons.css" />
     <Content Include="assets\fonts\fa-brands-400.svg" />
     <Content Include="assets\fonts\fa-regular-400.svg" />
@@ -242,6 +246,29 @@
     <Compile Include="Admin\Dashboard.aspx.designer.cs">
       <DependentUpon>Dashboard.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Admin\dt.cs" />
+    <Compile Include="Admin\JobList.aspx.cs">
+      <DependentUpon>JobList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\JobList.aspx.designer.cs">
+      <DependentUpon>JobList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\NewJob.aspx.cs">
+      <DependentUpon>NewJob.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\NewJob.aspx.designer.cs">
+      <DependentUpon>NewJob.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\txtDescriptionTitle.cs" />
+    <Compile Include="Admin\ViewResume.aspx.cs">
+      <DependentUpon>ViewResume.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\ViewResume.aspx.designer.cs">
+      <DependentUpon>ViewResume.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -364,6 +391,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="images\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <PropertyGroup>
