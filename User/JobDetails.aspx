@@ -21,10 +21,19 @@
         </div>
         </div>
         <!-- Hero Area End -->
+
+          <div>
+              <asp:Label ID="lblmsg" runat="server" Text="False"></asp:Label>
+          </div>
+
         <!-- job post company Start -->
         <div class="job-post-company pt-120 pb-120">
             <div class="container">
-                <div class="row justify-content-between">
+                <asp:DataList ID="DataList1" runat="server" OnItemCommand="DataList1_ItemCommand" OnItemDataBound="DataList1_ItemDataBound">
+
+                    <ItemTemplate>
+
+                        <div class="row justify-content-between">
                     <!-- Left Content -->
                     <div class="col-xl-7 col-lg-8">
                         <!-- job single -->
@@ -118,6 +127,11 @@
                        </div>
                     </div>
                 </div>
+
+                    </ItemTemplate>
+
+                </asp:DataList>
+                
             </div>
         </div>
         <!-- job post company End -->

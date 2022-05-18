@@ -79,7 +79,7 @@
                                           </div>
                                           <div class="col-12">
                                                 <div class="form-group">
-                                                    <label>Email</label>
+                                                    <label>Country</label>
                                                     <asp:DropDownList ID="ddlCountry" runat="server" DataSourceID="SqlDataSource1" CssClass="form-contact w-100"
                                                         AppendDataBoundItems="true" DataTextField="CountryName" DataValueField="CountryName">
                                                         <asp:ListItem Value="0">Select Country</asp:ListItem>
