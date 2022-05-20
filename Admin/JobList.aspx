@@ -12,7 +12,8 @@
             </div>
                     <asp:GridView ID="GridView1" runat="server" CssClass="table table-hover table-bordered"
                         EmptyDataText="No Record to display...!" AutoGenerateColumns="False" AllowPaging="True" PageSize="5"
-                            OnPageIndexChanging="GridView1_PageIndexChanging" DataKeyNames="JobId" >
+                            OnPageIndexChanging="GridView1_PageIndexChanging" DataKeyNames="JobId" OnRowDeleting="GridView1_RowDeleting"
+                             OnRowCommand="GridView1_RowCommand">
                             <Columns>
                                 <asp:BoundField DataField="Sr.No" HeaderText="Sr.No">
                                 <ItemStyle HorizontalAlign="Center" />
@@ -54,6 +55,20 @@
                                 <ItemStyle HorizontalAlign="Center" />
                                 </asp:BoundField>
 
+                                <asp:TemplateField HeaderText="Edit">
+                                    <ItemTemplate>
+                                        <asp:LinkButton ID="btnEditJob" runat="server" CommandName="EditJob" CommandArgument='<%# Eval("JobId") %>'>
+                                            <asp:Image ID="Img" runat="server" ImageUrl="~/assets/img/icon/editPencil.png" Height="25px"/>
+                                        </asp:LinkButton>
+                                    </ItemTemplate>
+                                    <ItemStyle HorizontalAlign="Center" Width="50px"/>
+                                </asp:TemplateField>
+
+                                <asp:CommandField CausesValidation="false" HeaderText="Delete" ShowDeleteButton="true" 
+                                    DeleteImageurl="../assets/img/icon/trashIcon.png" ButtonType="Image">
+                                    <ControlStyle  Height="25px" Width="25px"/>
+                                    <ItemStyle HorizontalAlign="Center" />
+                                    </asp:CommandField>
                             </Columns>
                             <HeaderStyle BackColor="#7200cf" ForeColor="White" />
                     </asp:GridView>
