@@ -51,12 +51,53 @@ namespace OnlineJobPortal.Admin
 
         protected void GridView1_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
-
+            GridView1.PageIndex = e.NewPageIndex;
+            ShowJob();
         }
 
-        protected void GridView1_PageIndexChanging1(object sender, GridViewPageEventArgs e)
+        protected void GridView1_RowDeleting(object sender, GridViewDeleteEventArgs e)
         {
-
+            try
+            {
+                GridViewRow row = GridView1.Rows[e.RowIndex];
+                int JobId = Convert.ToInt32(GridView1.DataKeys[e.RowIndex].Values[0]);
+                con = new SqlConnection(str);
+                cmd = new SqlCommand("Delete from Jobs Where JobId = @id", con);
+                cmd.Parameters.AddWithValue("@id",JobId);
+                con.Open();
+                int r = cmd.ExecuteNonQuery();
+                if (r > 0)
+                {
+                    llbMg.Text = "Job deleted succesfully!";
+                    llbMg.CssClass = "alert alert-success";
+                }
+                else 
+                {
+                    llbMg.Text = "Cannot delete this record!";
+                    llbMg.CssClass = "alert alert-danger";
+                }
+                con.Close();
+                GridView1.EditIndex = -1;
+                ShowJob();
+            }
+            catch (Exception ex) 
+            {
+                con.Close();
+                Response.Write("<script>alert('" + ex.Message + "');</script");
+            }
         }
+
+        protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            if (e.CommandName == "EditJob") 
+            {
+                Response.Redirect("NewJob.aspx?id=" + e.CommandArgument.ToString());
+            }
+        }
+
+        //protected void GridView1_PageIndexChanging1(object sender, GridViewPageEventArgs e)
+        //{
+
+        //}
     }
 }
