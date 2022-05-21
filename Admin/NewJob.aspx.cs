@@ -183,7 +183,7 @@ namespace OnlineJobPortal.Admin
                             imagePath = "images/" + obj.ToString() + fuCompanyLogo.FileName;
                             fuCompanyLogo.PostedFile.SaveAs(Server.MapPath("~/images/") + obj.ToString() + fuCompanyLogo.FileName);
 
-                            cmd.Parameters.AddWithValue("@CompanyImage", imagePath);
+                            cmd.Parameters.AddWithValue("@Companyimage", imagePath);
                             isValidToExecute = true;
                         }
                         else
@@ -199,6 +199,7 @@ namespace OnlineJobPortal.Admin
                         isValidToExecute = true;
 
                     }
+              
                 }
 
                 if (isValidToExecute)
@@ -219,6 +220,8 @@ namespace OnlineJobPortal.Admin
                     }
 
                 }
+
+
 
             }
             catch (Exception ex)
