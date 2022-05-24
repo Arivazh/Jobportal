@@ -105,7 +105,7 @@
                         </li>--%>
                     </ul>
                     <div class="logout_btn">
-                        <asp:LinkButton ID="btnLogOut" runat="server" CausesValidation="false">Logout</asp:LinkButton>
+                        <asp:LinkButton ID="btnLogOut" runat="server" CausesValidation="false" OnClick="btnLogOut_Click">Logout</asp:LinkButton>
                     </div>
 
                 </div>
@@ -125,4 +125,5 @@
             </div>
         </div>
     </form>
+    </body>
 </html>

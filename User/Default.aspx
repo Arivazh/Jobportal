@@ -22,7 +22,7 @@
                         <div class="row">
                             <div class="col-xl-8">
                                 <!-- form -->
-                                <form action="#" class="search-box">
+                                <'form' action="#" class="search-box">
                                     <div class="input-form">
                                         <input type="text" placeholder="Job Tittle or keyword">
                                     </div>
@@ -39,7 +39,7 @@
                                     <div class="search-form">
                                         <a href="#">Find job</a>
                                     </div>	
-                                </form>	
+                                </"form>	
                             </div>
                         </div>
                     </div>

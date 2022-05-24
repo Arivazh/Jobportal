@@ -347,8 +347,8 @@ C:\Users\BAYTONE\Desktop\trisha\bin\roslyn\VBCSCompiler.exe
 C:\Users\BAYTONE\Desktop\trisha\bin\roslyn\VBCSCompiler.exe.config
 C:\Users\BAYTONE\Desktop\trisha\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
 C:\Users\BAYTONE\Desktop\trisha\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-C:\Users\BAYTONE\Desktop\trisha\obj\Debug\OnlineJobPortal.csproj.AssemblyReference.cache
 C:\Users\BAYTONE\Desktop\trisha\obj\Debug\OnlineJobPortal.csproj.CoreCompileInputs.cache
 C:\Users\BAYTONE\Desktop\trisha\obj\Debug\OnlineJobPortal.csproj.CopyComplete
 C:\Users\BAYTONE\Desktop\trisha\obj\Debug\OnlineJobPortal.dll
 C:\Users\BAYTONE\Desktop\trisha\obj\Debug\OnlineJobPortal.pdb
+C:\Users\BAYTONE\Desktop\trisha\obj\Debug\OnlineJobPortal.csproj.AssemblyReference.cache
