@@ -13,5 +13,11 @@ namespace OnlineJobPortal.Admin
         {
 
         }
+
+        protected void btnLogOut_Click(object sender, EventArgs e)
+        {
+            Session.Abandon();
+            Response.Redirect("../User/Login.aspx");
+        }
     }
 }

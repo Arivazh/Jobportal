@@ -16,7 +16,7 @@ namespace OnlineJobPortal.Admin
         string str = ConfigurationManager.ConnectionStrings["JobPortalConnectionString"].ConnectionString;
         String query;
 
-        public DateTime DateTime { get; private set; }
+        //public DateTime DateTime { get; private set; }
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -25,8 +25,8 @@ namespace OnlineJobPortal.Admin
                 Response.Redirect("../User/Login.aspx");
             }
             Session["title"] = "Add Job";
-             
-            if (!IsPostBack) 
+
+            if (!IsPostBack)
             {
                 fillData();
             }
@@ -35,10 +35,10 @@ namespace OnlineJobPortal.Admin
 
         private void fillData()
         {
-            if (Request.QueryString["id"] != null) 
+            if (Request.QueryString["id"] != null)
             {
                 con = new SqlConnection(str);
-                query = "Select * from Jobs Where JobId = '"+ Request.QueryString["id"] +"' ";
+                query = "Select * from Jobs Where JobId = '" + Request.QueryString["id"] + "' ";
                 cmd = new SqlCommand(query, con);
                 con.Open();
                 SqlDataReader sdr = cmd.ExecuteReader();
@@ -52,7 +52,7 @@ namespace OnlineJobPortal.Admin
                         txtQualification.Text = sdr["Qualification"].ToString();
                         txtExperience.Text = sdr["Experience"].ToString();
                         txtSpecializatiom.Text = sdr["Specialization"].ToString();
-                        txtLastDate.Text = Convert.ToDateTime( sdr["LastDateToApply"]).ToString("yyyy-MMMM-dd");
+                        txtLastDate.Text = Convert.ToDateTime(sdr["LastDateToApply"]).ToString("yyyy-MM-dd");
                         txtSalary.Text = sdr["Salary"].ToString();
                         ddlJobType.SelectedValue = sdr["JobType"].ToString();
                         txtCompany.Text = sdr["CompanyName"].ToString();
@@ -68,10 +68,10 @@ namespace OnlineJobPortal.Admin
 
                     }
                 }
-                else 
+                else
                 {
                     llbMg.Text = "Job not found..!";
-                    llbMg.CssClass = "alert alert-danger"; 
+                    llbMg.CssClass = "alert alert-danger";
                 }
                 sdr.Close();
                 con.Close();
@@ -83,7 +83,7 @@ namespace OnlineJobPortal.Admin
         {
             try
             {
-                string type,conctQuery, imagePath = string.Empty;
+                string type, conctQuery, imagePath = string.Empty;
                 bool isValidToExecute = false;
                 con = new SqlConnection(str);
                 if (Request.QueryString["id"] != null)
@@ -92,7 +92,7 @@ namespace OnlineJobPortal.Admin
                     {
                         if (IsValidExtension(fuCompanyLogo.FileName))
                         {
-                            conctQuery = "CompanyImage= @CompanyImage";
+                            conctQuery = "CompanyImage= @CompanyImage,";
                         }
                         else
                         {
@@ -103,10 +103,10 @@ namespace OnlineJobPortal.Admin
                     }
                     else
                     {
-                       conctQuery = string.Empty;
+                        conctQuery = string.Empty;
                     }
                     query = @"Update Jobs set Tittle=@Title,NoOfPost=@NoOfPost,Description=@Description,Qualification=@Qualification,Experience=@Experience,Specialization=@Specialization,LastDateToApply=@LastDateToApply,
-                       Salary= @Salary,JobType=@JobType,CompanyName=@CompanyName,"+ conctQuery +@"Website=@Website,Email=@Email,Address=@Address,Country=@Country,State=@State where JobId=@id)";
+                       Salary= @Salary,JobType=@JobType,CompanyName=@CompanyName," + conctQuery + @"Website=@Website,Email=@Email,Address=@Address,Country=@Country,State=@State where JobId=@id)";
                     type = "Updated";
                     cmd = new SqlCommand(query, con);
                     cmd.Parameters.AddWithValue("@Title", txtJobTitle.Text.Trim());
@@ -146,12 +146,12 @@ namespace OnlineJobPortal.Admin
                     }
                     else
                     {
-                       
+
                         isValidToExecute = true;
 
                     }
                 }
-                else 
+                else
                 {
                     query = @"Insert into Jobs values(@Title,@NoOfPost,@Description,@Qualification,@Experience,@Specialization,@LastDateToApply,
                         @Salary,@JobType,@CompanyName,@CompanyImage,@Website,@Email,@Address,@Country,@State,@CreateDate)";
@@ -199,7 +199,7 @@ namespace OnlineJobPortal.Admin
                         isValidToExecute = true;
 
                     }
-              
+
                 }
 
                 if (isValidToExecute)
@@ -214,16 +214,28 @@ namespace OnlineJobPortal.Admin
                     }
                     else
                     {
-                        llbMg.Text = "Cannot save the records, please try after sometimes..!";
+
+                        llbMg.Text = "Cannot" + type + "the records, please try after sometime..!";
                         llbMg.CssClass = "alert alert-danger";
+                        
+
+
+
+                        
+
+
+
+
+
+
+
+                        
+
 
                     }
-
                 }
 
-
-
-            }
+            }  
             catch (Exception ex)
             {
                 Response.Write("<script>alert('" + ex.Message + "');</script");

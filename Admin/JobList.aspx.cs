@@ -91,11 +91,11 @@ namespace OnlineJobPortal.Admin
         {
             if (e.CommandName == "EditJob") 
             {
-                Response.Redirect("NewJob.aspx?id=" + e.CommandArgument.ToString());
+                Response.Redirect("NewJob.aspx?id=" + e.CommandArgument.ToString() );
             }
         }
 
-        //protected void GridView1_PageIndexChanging1(object sender, GridViewPageEventArgs e)
+               //protected void GridView1_PageIndexChanging1(object sender, GridViewPageEventArgs e)
         //{
 
         //}

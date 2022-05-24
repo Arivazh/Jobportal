@@ -17,7 +17,15 @@ namespace OnlineJobPortal.User
       
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            //if (Session["admin"] == null) 
+            //{
+            //    Response.Redirect("../User/Login.aspx");            
+            //}
+            //if (!IsPostBack) 
+            //{
+            //  ShowContact();
+            //}
+         
         }
 
         protected void btnSend_Click(object sender, EventArgs e)
