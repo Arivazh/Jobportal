@@ -4,7 +4,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
 
-    <main>
+        <main>
 
         <!-- Hero Area Start-->
         <div class="slider-area ">

@@ -104,7 +104,7 @@ namespace OnlineJobPortal.User
             }
         }
 
-   
+
 
         protected void DataList1_ItemDataBound1(object sender, DataListItemEventArgs e)
         {
@@ -112,6 +112,7 @@ namespace OnlineJobPortal.User
         }
         protected string GetImageUrl(Object url)
         {
+
             string url1 = "";
             if (string.IsNullOrEmpty(url.ToString()) || url == DBNull.Value)
             {
