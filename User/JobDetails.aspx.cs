@@ -15,7 +15,7 @@ namespace OnlineJobPortal.User
         SqlConnection con;
         SqlCommand cmd;
         SqlDataAdapter sda;
-        DataTable dt, dt1;
+        DataTable dt;
         string str = ConfigurationManager.ConnectionStrings["JobPortalConnectionString"].ConnectionString;
         public string jobTitle = string.Empty;
         protected void Page_Init(object sender, EventArgs e)
@@ -45,10 +45,19 @@ namespace OnlineJobPortal.User
 
         }
 
-
         protected void DataList1_ItemCommand(object source, DataListCommandEventArgs e)
         {
-            if(e.CommandName == "ApplyJob")
+
+        }
+
+        protected void DataList1_ItemDataBound(object sender, DataListItemEventArgs e)
+        {
+
+        }
+
+        protected void DataList1_ItemCommand1(object source, DataListCommandEventArgs e)
+        {
+            if (e.CommandName == "ApplyJob")
             {
                 if (Session["user"] != null)
                 {
@@ -61,7 +70,7 @@ namespace OnlineJobPortal.User
                         cmd.Parameters.AddWithValue("@UserId", Session["userId"]);
                         con.Open();
                         int r = cmd.ExecuteNonQuery();
-                        if(r >0)
+                        if (r > 0)
 
                         {
                             lblmsg.Visible = true;
@@ -70,16 +79,16 @@ namespace OnlineJobPortal.User
 
                         }
                         else
-                        
-                            {
-                                lblmsg.Visible = true;
-                                lblmsg.Text = "Cannot apply the job please try after sometime...!";
-                                lblmsg.CssClass = "alert alert-danger";
 
-                            }
-                        
+                        {
+                            lblmsg.Visible = true;
+                            lblmsg.Text = "Cannot apply the job please try after sometime...!";
+                            lblmsg.CssClass = "alert alert-danger";
+
+                        }
+
                     }
-                    catch(Exception ex)
+                    catch (Exception ex)
                     {
                         Response.Write("<script>alert('" + ex.Message + "');</script");
                     }
@@ -95,20 +104,12 @@ namespace OnlineJobPortal.User
             }
         }
 
-        protected void DataList1_ItemDataBound(object sender, DataListItemEventArgs e)
+   
+
+        protected void DataList1_ItemDataBound1(object sender, DataListItemEventArgs e)
         {
 
         }
-
-        protected void DataList1_ItemCommand1(object source, DataListCommandEventArgs e)
-    {
-
-    }
-
-    protected void DataList1_ItemDataBound1(object sender, DataListItemEventArgs e)
-    {
-
-    }
         protected string GetImageUrl(Object url)
         {
             string url1 = "";
