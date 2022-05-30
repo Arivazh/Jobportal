@@ -77,7 +77,7 @@
                                     <div class="row">
                                         <div class="col-sm-12">
                                             <asp:Button ID="btnEdit" runat="server" Text="Edit" CssClass="button button-contactFrom boxed-btn"
-                                                 CommandName="EditUserProfile"  CommandArgument= '<%# Eval("Username") %>'/>
+                                                 CommandName="EditUserProfile"  CommandArgument= '<%# Eval("UserId") %>'/>
                                         </div>
                                     </div>
                                 </div>
