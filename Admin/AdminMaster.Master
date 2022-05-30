@@ -75,7 +75,7 @@
                                 <div class="title">Dashboard</div>
                             </a>
                         </li>
-                        
+
                         <li>
                             <a href="NewJob.aspx">
                                 <div class="icon"><i class="fas fa-plus-square"></i></div>
@@ -90,7 +90,7 @@
                             </a>
                         </li>
 
-                        <%--<li>
+                        <li>
                             <a href="ViewResume.aspx">
                                 <div class="icon"><i class="fas fa-file-download"></i></div>
                                 <div class="title">View Resume</div>
@@ -102,7 +102,7 @@
                                 <div class="icon"><i class="fas fa-comment-alt"></i></div>
                                 <div class="title">Contact List</div>
                             </a>
-                        </li>--%>
+                        </li>
                     </ul>
                     <div class="logout_btn">
                         <asp:LinkButton ID="btnLogOut" runat="server" CausesValidation="false" OnClick="btnLogOut_Click">Logout</asp:LinkButton>
@@ -125,5 +125,5 @@
             </div>
         </div>
     </form>
-    </body>
+</body>
 </html>
