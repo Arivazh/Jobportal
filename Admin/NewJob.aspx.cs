@@ -90,7 +90,7 @@ namespace OnlineJobPortal.Admin
                 {
                     if (fuCompanyLogo.HasFile)
                     {
-                        if (IsValidExtension(fuCompanyLogo.FileName))
+                        if (Utils.IsValidExtension(fuCompanyLogo.FileName))
                         {
                             conctQuery = "CompanyImage= @CompanyImage,";
                         }
@@ -128,7 +128,7 @@ namespace OnlineJobPortal.Admin
                     cmd.Parameters.AddWithValue("@id", Request.QueryString["id"].ToString());
                     if (fuCompanyLogo.HasFile)
                     {
-                        if (IsValidExtension(fuCompanyLogo.FileName))
+                        if (Utils.IsValidExtension(fuCompanyLogo.FileName))
                         {
                             Guid obj = Guid.NewGuid();
                             imagePath = "images/" + obj.ToString() + fuCompanyLogo.FileName;
@@ -177,7 +177,7 @@ namespace OnlineJobPortal.Admin
                     cmd.Parameters.AddWithValue("@CreateDate", time.ToString("yyyy-MM-dd HH:mm:ss"));
                     if (fuCompanyLogo.HasFile)
                     {
-                        if (IsValidExtension(fuCompanyLogo.FileName))
+                        if (Utils.IsValidExtension(fuCompanyLogo.FileName))
                         {
                             Guid obj = Guid.NewGuid();
                             imagePath = "images/" + obj.ToString() + fuCompanyLogo.FileName;
@@ -266,22 +266,22 @@ namespace OnlineJobPortal.Admin
 
         }
 
-        private bool IsValidExtension(string fileName)
-        {
-            bool isValid = false;
-            string[] fileExtension = { ".jpg", "png", ".jpeg" };
-            for (int i = 0; i <= fileExtension.Length - 1; i++)
-            {
-                if (fileName.Contains(fileExtension[i]))
-                {
+        //private bool IsValidExtension(string fileName)
+        //{
+        //    bool isValid = false;
+        //    string[] fileExtension = { ".jpg", "png", ".jpeg" };
+        //    for (int i = 0; i <= fileExtension.Length - 1; i++)
+        //    {
+        //        if (fileName.Contains(fileExtension[i]))
+        //        {
 
-                    isValid = true;
-                    break;
-                }
+        //            isValid = true;
+        //            break;
+        //        }
 
-            }
-            return isValid;
-        }
+        //    }
+        //    return isValid;
+        //}
 
     }
 

@@ -28,27 +28,35 @@ namespace OnlineJobPortal.User
             if (!IsPostBack) 
             {
                 showUserProfile();
-            }
+            }   
         }
 
         private void showUserProfile()
         {
             con = new SqlConnection(str);
-            string query = "Select UserId,Username,Name,Address,Mobile,Email,Country,Resume from [User] Where Username=@Username";
+            string query = "Select UserId,Username,Name,Address,Mobile,Email,Country,Resume from [User] where Username=@username";
             cmd = new SqlCommand(query,con);
-            cmd.Parameters.AddWithValue("@Username", Session["user"]);
+            cmd.Parameters.AddWithValue("@username", Session["user"]);
             sda = new SqlDataAdapter(cmd);
             dt = new DataTable();
             sda.Fill(dt);
-            dlProfile.DataSource = dt;
-            dlProfile.DataBind();
+            
+            if(dt.Rows.Count > 0)
+            {
+                dlProfile.DataSource = dt;
+                dlProfile.DataBind();
+            }
+            else
+            {
+                Response.Write("<script>alert('Please login again with your latest UserName');</script");
+            }
         }
 
         protected void dlProfile_ItemCommand(object source, DataListCommandEventArgs e)
         {
             if (e.CommandName == "EditUserProfile") 
             {
-                Response.Redirect("ResumeBuilder.aspx?id=" + e.CommandArgument.ToString());
+                Response.Redirect("ResumeBuild.aspx?id=" + e.CommandArgument.ToString());
             }
         }
     }

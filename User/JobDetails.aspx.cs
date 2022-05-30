@@ -43,25 +43,53 @@ namespace OnlineJobPortal.User
             DataList1.DataBind();
             jobTitle = dt.Rows[0]["Title"].ToString();
 
-        }
+        }  
 
 
-        protected void DataList1_ItemCommand(object source, DataListCommandEventArgs e)
+        //protected void DataList1_ItemCommand(object source, DataListCommandEventArgs e)
+        //{
+
+        //}
+
+        //protected void DataList1_ItemDataBound(object sender, DataListItemEventArgs e)
+        //{
+            
+        //} 
+        bool isApplied()
         {
-            if(e.CommandName == "ApplyJob")
+            con = new SqlConnection(str);
+            string query = @"Select * from AppliedJobs where UserId =@UserId and JobId = @JobId";
+            cmd = new SqlCommand(query, con);
+            cmd.Parameters.AddWithValue("@UserId", Session["userId"]);
+            cmd.Parameters.AddWithValue("@JobId", Request.QueryString["id"]);
+            sda = new SqlDataAdapter(cmd);
+            dt1 = new DataTable();
+            sda.Fill(dt1);
+            if(dt1.Rows.Count == 1)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        protected void DataList1_ItemCommand1(object source, DataListCommandEventArgs e)
+    {
+            if (e.CommandName == "ApplyJob")
             {
                 if (Session["user"] != null)
                 {
                     try
                     {
                         con = new SqlConnection(str);
-                        string query = @"Insert into AppliedJobs where (@JobId, @UserId";
+                        string query = @"Insert into AppliedJobs Values ( @JobId, @UserId)";
                         cmd = new SqlCommand(query, con);
-                        cmd.Parameters.AddWithValue("@id", Request.QueryString["id"]);
+                        cmd.Parameters.AddWithValue("@JobId", Request.QueryString["id"]);
                         cmd.Parameters.AddWithValue("@UserId", Session["userId"]);
                         con.Open();
                         int r = cmd.ExecuteNonQuery();
-                        if(r >0)
+                        if (r > 0)
 
                         {
                             lblmsg.Visible = true;
@@ -70,16 +98,16 @@ namespace OnlineJobPortal.User
 
                         }
                         else
-                        
-                            {
-                                lblmsg.Visible = true;
-                                lblmsg.Text = "Cannot apply the job please try after sometime...!";
-                                lblmsg.CssClass = "alert alert-danger";
 
-                            }
-                        
+                        {
+                            lblmsg.Visible = true;
+                            lblmsg.Text = "Cannot apply the job please try after sometime...!";
+                            lblmsg.CssClass = "alert alert-danger";
+
+                        }
+
                     }
-                    catch(Exception ex)
+                    catch (Exception ex)
                     {
                         Response.Write("<script>alert('" + ex.Message + "');</script");
                     }
@@ -95,20 +123,26 @@ namespace OnlineJobPortal.User
             }
         }
 
-        protected void DataList1_ItemDataBound(object sender, DataListItemEventArgs e)
-        {
-
-        }
-
-        protected void DataList1_ItemCommand1(object source, DataListCommandEventArgs e)
-    {
-
-    }
-
     protected void DataList1_ItemDataBound1(object sender, DataListItemEventArgs e)
     {
+            if (Session["user"] != null)
+            {
+                LinkButton btnApplyJob = e.Item.FindControl("lbApplyJob") as LinkButton;
+                if (isApplied())
+                {
+                    btnApplyJob.Enabled = false;
+                    btnApplyJob.Text = "Applied";
 
-    }
+                }
+                else
+                {
+                    btnApplyJob.Enabled = true;
+                    btnApplyJob.Text = "Apply Now";
+
+                }
+            }
+
+        }
         protected string GetImageUrl(Object url)
         {
             string url1 = "";

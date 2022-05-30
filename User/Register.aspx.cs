@@ -66,13 +66,13 @@ namespace OnlineJobPortal.User
                 }
                 else
                 {
-                    Response.Write("<script>alert('" + ex.Message + "'</script");
+                    Response.Write("<script>alert('" + ex.Message + "');</script");
                 }
 
             }
             catch (Expection ex)
             {
-                Response.Write("<script>alert('" + ex.Message + "'</script");
+                Response.Write("<script>alert('" + ex.Message + "');</script");
             }
             finally 
             {
