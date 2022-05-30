@@ -19,7 +19,7 @@
                       Visible = "false">< Back</asp:HyperLink>
                 </div>
             </div>
-            <h3 class="text-center"><%Response.Write(Session["title"]); %></h3>
+            <h3 class="text-center"><%Response.Write(Session["Title"]); %></h3>
 
             <div class="row mr-lg-5 ml-lg-5 mb-3">
                 <div class="col-md-6 pt-3">
