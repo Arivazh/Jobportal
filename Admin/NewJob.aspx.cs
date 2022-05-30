@@ -90,7 +90,7 @@ namespace OnlineJobPortal.Admin
                 {
                     if (fuCompanyLogo.HasFile)
                     {
-                        if (IsValidExtension(fuCompanyLogo.FileName))
+                        if ( Utils.IsValidExtension(fuCompanyLogo.FileName))
                         {
                             conctQuery = "CompanyImage= @CompanyImage,";
                         }
@@ -105,8 +105,10 @@ namespace OnlineJobPortal.Admin
                     {
                         conctQuery = string.Empty;
                     }
-                    query = @"Update Jobs set Tittle=@Title,NoOfPost=@NoOfPost,Description=@Description,Qualification=@Qualification,Experience=@Experience,Specialization=@Specialization,LastDateToApply=@LastDateToApply,
-                       Salary= @Salary,JobType=@JobType,CompanyName=@CompanyName," + conctQuery + @"Website=@Website,Email=@Email,Address=@Address,Country=@Country,State=@State where JobId=@id)";
+                    query = @"Update Jobs set Title=@Title,NoOfPost=@NoOfPost,Description=@Description,Qualification=@Qualification,
+                            Experience=@Experience,Specialization=@Specialization,LastDateToApply=@LastDateToApply,
+                            Salary= @Salary,JobType=@JobType,CompanyName=@CompanyName," + conctQuery + @"Website=@Website,
+                            Email=@Email,Address=@Address,Country=@Country,State=@State where JobId=@id";
                     type = "Updated";
                     cmd = new SqlCommand(query, con);
                     cmd.Parameters.AddWithValue("@Title", txtJobTitle.Text.Trim());
@@ -128,7 +130,7 @@ namespace OnlineJobPortal.Admin
                     cmd.Parameters.AddWithValue("@id", Request.QueryString["id"].ToString());
                     if (fuCompanyLogo.HasFile)
                     {
-                        if (IsValidExtension(fuCompanyLogo.FileName))
+                        if (Utils.IsValidExtension(fuCompanyLogo.FileName))
                         {
                             Guid obj = Guid.NewGuid();
                             imagePath = "images/" + obj.ToString() + fuCompanyLogo.FileName;
@@ -146,7 +148,6 @@ namespace OnlineJobPortal.Admin
                     }
                     else
                     {
-
                         isValidToExecute = true;
 
                     }
@@ -177,7 +178,7 @@ namespace OnlineJobPortal.Admin
                     cmd.Parameters.AddWithValue("@CreateDate", time.ToString("yyyy-MM-dd HH:mm:ss"));
                     if (fuCompanyLogo.HasFile)
                     {
-                        if (IsValidExtension(fuCompanyLogo.FileName))
+                        if ( Utils.IsValidExtension(fuCompanyLogo.FileName))
                         {
                             Guid obj = Guid.NewGuid();
                             imagePath = "images/" + obj.ToString() + fuCompanyLogo.FileName;
@@ -208,29 +209,18 @@ namespace OnlineJobPortal.Admin
                     int res = cmd.ExecuteNonQuery();
                     if (res > 0)
                     {
-                        llbMg.Text = "Job " + type + " successful..!";
+                        llbMg.Text = "Job" + type + "successful..!";
                         llbMg.CssClass = "alert alert-success";
                         Clear();
                     }
                     else
                     {
 
-                        llbMg.Text = "Cannot" + type + "the records, please try after sometime..!";
+                        llbMg.Text = "Cannot " + type + "the records, please try after sometime..!";
                         llbMg.CssClass = "alert alert-danger";
-                        
+                                                              
 
-
-
-                        
-
-
-
-
-
-
-
-                        
-
+                                            
 
                     }
                 }
@@ -266,22 +256,22 @@ namespace OnlineJobPortal.Admin
 
         }
 
-        private bool IsValidExtension(string fileName)
-        {
-            bool isValid = false;
-            string[] fileExtension = { ".jpg", "png", ".jpeg" };
-            for (int i = 0; i <= fileExtension.Length - 1; i++)
-            {
-                if (fileName.Contains(fileExtension[i]))
-                {
+        //private bool IsValidExtension(string fileName)
+        //{
+        //    bool isValid = false;
+        //    string[] fileExtension = { ".jpg", "png", ".jpeg" };
+        //    for (int i = 0; i <= fileExtension.Length - 1; i++)
+        //    {
+        //        if (fileName.Contains(fileExtension[i]))
+        //        {
 
-                    isValid = true;
-                    break;
-                }
+        //            isValid = true;
+        //            break;
+        //        }
 
-            }
-            return isValid;
-        }
+        //    }
+        //    return isValid;
+        //}
 
     }
 

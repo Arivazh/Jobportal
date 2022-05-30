@@ -58,7 +58,7 @@ namespace OnlineJobPortal.User
             }
             catch (Expection ex)
             {
-                Response.Write("<script>alert('" + ex.Message + "'</script");
+                Response.Write("<script>alert('" + ex.Message + "')</script");
 
             }
             finally
