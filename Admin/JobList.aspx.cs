@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
+using System.Drawing;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -47,6 +48,10 @@ namespace OnlineJobPortal.Admin
             sda.Fill(dt);
             GridView1.DataSource = dt;
             GridView1.DataBind();
+            if(Request.QueryString["id"] != null) 
+            {
+                linkBack.Visible = true;
+            }
         }
 
         protected void GridView1_PageIndexChanging(object sender, GridViewPageEventArgs e)
@@ -76,14 +81,18 @@ namespace OnlineJobPortal.Admin
                     llbMg.Text = "Cannot delete this record!";
                     llbMg.CssClass = "alert alert-danger";
                 }
-                con.Close();
+          
                 GridView1.EditIndex = -1;
                 ShowJob();
             }
             catch (Exception ex) 
             {
-                con.Close();
+                
                 Response.Write("<script>alert('" + ex.Message + "');</script");
+            }
+            finally
+            {
+                con.Close();
             }
         }
 
@@ -95,7 +104,25 @@ namespace OnlineJobPortal.Admin
             }
         }
 
-               //protected void GridView1_PageIndexChanging1(object sender, GridViewPageEventArgs e)
+        protected void GridView1_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            if(e.Row.RowType == DataControlRowType.DataRow)
+            {
+                e.Row.ID = e.Row.RowIndex.ToString();
+                if (Request.QueryString["id"] != null) 
+                {
+                   int jobId = Convert.ToInt32(GridView1.DataKeys[e.Row.RowIndex].Values[0]);
+                    if (jobId == Convert.ToInt32(Request.QueryString["id"])) 
+                    {
+                        e.Row.BackColor = ColorTranslator.FromHtml("#A1DCF2");
+                    }
+                        
+
+                }
+            }
+        }
+
+        //protected void GridView1_PageIndexChanging1(object sender, GridViewPageEventArgs e)
         //{
 
         //}
