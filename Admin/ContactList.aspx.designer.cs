@@ -11,7 +11,7 @@ namespace OnlineJobPortal.Admin
 {
 
 
-    public partial class ViewResume
+    public partial class ContactList
     {
 
         /// <summary>
