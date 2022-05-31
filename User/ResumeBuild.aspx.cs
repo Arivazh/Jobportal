@@ -102,7 +102,7 @@ namespace OnlineJobPortal.User
                     {
                         if (Utils.IsValidExtensionResume(fuResume.FileName))
                         {
-                            concatQuery = "Resume=@resume";
+                            concatQuery = "Resume=@resume,";
 
                             isValid = true;
                         }
@@ -120,7 +120,7 @@ namespace OnlineJobPortal.User
                     query = @"Update [User] set Username =@Username, Name = @Name,Email=@Email, Mobile=@Mobile,
                             TenthGrade=@TenthGrade, TwelthGrade=@TwelthGrade, GraduationGrade=@GraduationGrade, 
                             PostGraduationGrade =@PostGraduationGrade, Phd =@Phd, WorksOn =@WorksOn ,
-                            Experience =@Experience " + concatQuery + " Address = @Address, Country=@Country where UserId=@UserId";
+                            Experience =@Experience, " + concatQuery + " Address = @Address, Country=@Country where UserId=@UserId";
                     cmd = new SqlCommand(query, con);
                     cmd.Parameters.AddWithValue("@Username", txtUserName.Text.Trim());
                     cmd.Parameters.AddWithValue("@Name", txtFullName.Text.Trim());
@@ -141,14 +141,12 @@ namespace OnlineJobPortal.User
                         if (Utils.IsValidExtensionResume(fuResume.FileName))
                         {
                             Guid obj = Guid.NewGuid();
-                            filePath = "Resume/" + obj.ToString() + fuResume.FileName;
+                            filePath = "Resumes/" + obj.ToString() + fuResume.FileName;
                             fuResume.PostedFile.SaveAs(Server.MapPath("~/Resumes/") + obj.ToString() + fuResume.FileName);
 
                             cmd.Parameters.AddWithValue("@resume", filePath);
                             isValid = true;
                         }
-
-
                         else
                         {
                             concatQuery = string.Empty;
