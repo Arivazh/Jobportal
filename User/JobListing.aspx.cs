@@ -176,7 +176,7 @@ namespace OnlineJobPortal.User
                 postedDate = selectedRadioButton();
                 con = new SqlConnection(str);
                 string query = @"Select JobId,Title,Salary,JobType,CompanyName,CompanyImage,Country,State,CreateDate from Jobs
-                  Where Convert(DATE,CreatedDate)" + postedDate + " ";
+                  Where Convert(DATE,CreateDate)" + postedDate + " ";
                 cmd = new SqlCommand(query, con);
                 sda = new SqlDataAdapter(cmd);
                 dt = new DataTable();
@@ -200,7 +200,7 @@ namespace OnlineJobPortal.User
             DateTime date = DateTime.Today;
             if (RadioButtonList1.SelectedValue == "1")
             {
-                postedDate = "= Conver(DATE, '" + date.ToString("yyyy/MM/dd") + "') ";
+                postedDate = "= Convert(DATE, '" + date.ToString("yyyy/MM/dd") + "') ";
             }
             else if (RadioButtonList1.SelectedValue == "2")
             {
