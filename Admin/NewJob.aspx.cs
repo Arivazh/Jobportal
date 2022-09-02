@@ -105,8 +105,10 @@ namespace OnlineJobPortal.Admin
                     {
                         conctQuery = string.Empty;
                     }
-                    query = @"Update Jobs set Tittle=@Title,NoOfPost=@NoOfPost,Description=@Description,Qualification=@Qualification,Experience=@Experience,Specialization=@Specialization,LastDateToApply=@LastDateToApply,
-                       Salary= @Salary,JobType=@JobType,CompanyName=@CompanyName," + conctQuery + @"Website=@Website,Email=@Email,Address=@Address,Country=@Country,State=@State where JobId=@id)";
+                    query = @"Update Jobs set Title=@Title,NoOfPost=@NoOfPost,Description=@Description,Qualification=@Qualification,
+                            Experience=@Experience,Specialization=@Specialization,LastDateToApply=@LastDateToApply,
+                            Salary= @Salary,JobType=@JobType,CompanyName=@CompanyName," + conctQuery + @"Website=@Website,
+                            Email=@Email,Address=@Address,Country=@Country,State=@State where JobId=@id";
                     type = "Updated";
                     cmd = new SqlCommand(query, con);
                     cmd.Parameters.AddWithValue("@Title", txtJobTitle.Text.Trim());
@@ -208,7 +210,7 @@ namespace OnlineJobPortal.Admin
                     int res = cmd.ExecuteNonQuery();
                     if (res > 0)
                     {
-                        llbMg.Text = "Job " + type + " successful..!";
+                        llbMg.Text = "Job" + type + " successful..!";
                         llbMg.CssClass = "alert alert-success";
                         Clear();
                     }
